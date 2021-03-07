@@ -1,0 +1,31 @@
+<html>
+	<head>
+		
+	</head>
+	<body>
+		
+		{% if list_choices %}
+			<h1>{{question.question_text}}</h1>
+			<form action="{% url 'polls:vote' question.id %}" method="post">
+				{% csrf_token %}
+				{%for choice in list_choices %}
+					<label for="fname">{{choice.choice_text}}:</label>
+					<input type="radio" id="choice{{ forloop.counter }}" name="choice" value="{{choice.id}}"><br><br>
+				{% endfor %}
+				<input type="submit" value="Submit">
+			</form>
+		{% else %}
+
+			<p>não existem alternativas para essa pergunta :( </p>
+		{%endif%}
+		
+			
+			
+		
+
+
+
+		
+
+	</body>
+</html>
